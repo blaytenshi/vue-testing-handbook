@@ -21,7 +21,7 @@ describe('SubmitButton.vue', () => {
   });
 
   it("displays an admin privileges message", () => {
-    const wrapper = factory({ isAdmin: true })
+    const wrapper = factory({ isAdmin: true });
 
     expect(wrapper.find("span").text()).toBe("Admin Privileges");
     expect(wrapper.find("button").text()).toBe("submit");
