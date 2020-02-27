@@ -9,7 +9,7 @@
     name: "Greeting",
     data() {
       return {
-        greeting: "Vue and TDD"
+        greeting: "Vue without TDD"
       }
     }
   }
