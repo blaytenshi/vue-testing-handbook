@@ -15,6 +15,7 @@
     computed: {
       numbers() {
         const evens = [];
+        const odds = [];
 
         for (let i = 1; i < 10; i++) {
           if (i % 2 === 0) {
@@ -22,7 +23,7 @@
           }
         }
 
-        return evens.join(', ');
+        return this.even === true ? evens.join(', ') : odds.join(', ');
       }
     }
   }
