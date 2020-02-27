@@ -19,5 +19,7 @@ describe("Emitter", () => {
 
     console.log(wrapper.emitted().myEvent); // will show:
     // [ [ 'name', 'password' ], [ 'name', 'password' ] ]
+
+    expect(wrapper.emitted().myEvent[0].toEqual(["name", "password"]));
   })
 });
