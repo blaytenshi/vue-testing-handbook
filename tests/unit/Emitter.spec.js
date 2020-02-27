@@ -5,13 +5,19 @@ describe("Emitter", () => {
   it("emits an event with two arguments", () => {
     const wrapper = shallowMount(Emitter);
 
-    // in vue, methods are attached to the Vue instance
-    // this means in the methods the value of 'this' is actually references the vue instance
-    // also this is why you shouldn't use arrow functions to declare methods in the
-    // script because you'll lose the reference to the vue instance
+    wrapper.vm.emitEvent();
     wrapper.vm.emitEvent();
 
-    // logging out the content of the wrapper's emitted helper function
-    console.log(wrapper.emitted());
+    // we can see that emitted() returns an object with property keys of
+    // the event that was emitted with the values as an array of arrays such that
+    // each time the event is emitted, the next array is the arguments that was
+    // emitted alongside the event in emit order
+
+    console.log(wrapper.emitted()); // will show:
+    // { myEvent: [ [ 'name', 'password' ], [ 'name', 'password' ] ] }
+    // because it was called twice
+
+    console.log(wrapper.emitted().myEvent); // will show:
+    // [ [ 'name', 'password' ], [ 'name', 'password' ] ]
   })
 });
