@@ -21,5 +21,18 @@ describe("Emitter", () => {
     // [ [ 'name', 'password' ], [ 'name', 'password' ] ]
 
     expect(wrapper.emitted().myEvent[0]).toEqual(["name", "password"]);
-  })
+  });
+
+  it("emits an event without mounting the component", () => {
+    const events = {};
+
+    // this is essentially a mocked $emit property on the vue instance
+    // where it simply takes a function that returns the event object in the
+    // wrapper.emitted()'s form of { eventName: [ [...arg], [...arg] ] }
+    const $emit = (event, ...args) => { events[event] = [...args]};
+
+    Emitter.methods.emitEvent.call({ $emit });
+
+    expect(events.myEvent).toEqual(["name", "password"]);
+  });
 });
