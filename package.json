@@ -12,7 +12,8 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "flush-promises": "^1.0.2",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-i18n": "^8.15.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",
