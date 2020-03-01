@@ -6,9 +6,14 @@ describe('ParentWithAPICallChild.vue', () => {
   it('renders with mount and does initialise API call', () => {
     // fully renders the child components executing the API call
     // you'll see a console log of it
-    const wrapper = mount(ParentWithAPICallChild);
+    const wrapper = mount(ParentWithAPICallChild, {
+      stubs: {
+        ComponentWithAsyncCall
+      }
+    });
 
     // you can use find() with the component name
     expect(wrapper.find(ComponentWithAsyncCall).exists()).toBe(true);
+    console.log(wrapper.html());
   });
 });
