@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Child />
+    <span v-show="showSpan">
+      Parent Component
+    </span>
+    <Child v-if="showChild"/>
   </div>
 </template>
 
@@ -11,6 +14,12 @@
     name: "Parent",
     components: {
       Child
+    },
+    data() {
+      return {
+        showSpan: false,
+        showChild: false
+      }
     }
   }
 </script>
