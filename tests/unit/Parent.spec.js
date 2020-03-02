@@ -1,5 +1,6 @@
 import { shallowMount, mount } from "@vue/test-utils";
-import Parent from '@/components/Parent'
+import Parent from '@/components/Parent';
+import Child from '@/components/Child';
 
 describe('Parent.vue', () => {
   it('should render parent compnent', () => {
@@ -29,5 +30,24 @@ describe('Parent.vue', () => {
     });
 
     expect(wrapper.find("span").isVisible()).toBe(true);
+  });
+
+  // you can find things by the component itself
+  it('does renders a child component', () => {
+    const wrapper= shallowMount(Parent, {
+      data() {
+        return { showChild: true }
+      }
+    });
+
+    // exists works on the v-if directive.
+    expect(wrapper.find(Child).exists()).toBe(false);
+  });
+
+  // or find it by the name of the child component
+  it('does not render a child component', () => {
+    const wrapper = shallowMount(Parent);
+
+    expect(wrapper.find({ name: 'Child' }).exists()).toBe(false);
   })
 });
