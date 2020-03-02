@@ -8,14 +8,25 @@ describe('ParentWithAPICallChild.vue', () => {
     // you'll see a console log of it
     const wrapper = mount(ParentWithAPICallChild, {
       stubs: {
-        ComponentWithAsyncCall: true // replace all instances of ComponentWithAsyncCall with ComponentWithAsyncCall-stub
+        ComponentWithAsyncCall: "<div class='stub'></div>" // replace all instances of ComponentWithAsyncCall with your own custom element or component
       }
     });
 
     // see the component stubbed out
-    console.log("ParentWithAPICallChild", wrapper.html());
+    console.log("mount ParentWithAPICallChild", wrapper.html());
 
     // you can use find() with the component name
     expect(wrapper.find(ComponentWithAsyncCall).exists()).toBe(true);
   });
+
+  it('renders with shallowMount and does not initialise API Call', () => {
+
+    // shallow mount automatically stubs child components
+    const wrapper = shallowMount(ParentWithAPICallChild);
+
+    // should print out <componentwithasynccall-stub></componentwithasynccall-stub>
+    console.log("Shallow Mount ParentWithAPICallChild", wrapper.html());
+
+    expect(wrapper.find(ComponentWithAsyncCall).exists()).toBe(true);
+  })
 });
