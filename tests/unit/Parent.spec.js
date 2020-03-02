@@ -41,7 +41,7 @@ describe('Parent.vue', () => {
     });
 
     // exists works on the v-if directive.
-    expect(wrapper.find(Child).exists()).toBe(false);
+    expect(wrapper.find(Child).exists()).toBe(true);
   });
 
   // or find it by the name of the child component
